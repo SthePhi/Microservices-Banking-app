@@ -1,5 +1,7 @@
 package com.insignia.depositaccount.Model;
 
+import java.util.Date;
+
 public class DepositAccount
 {
     /*Declaring Variables*/
@@ -14,10 +16,11 @@ public class DepositAccount
     private Long currentBalance;
     private double duration;
     private double interestRate;
-    private String openDate;
-    private String closeDate;
+    private Date openDate;
+    private Date closeDate;
     private Integer days;
 
+    /*Start of getters and Setters*/
     public Long getAccountNumber()
     {
         return accountNumber;
@@ -128,22 +131,22 @@ public class DepositAccount
         this.interestRate = interestRate;
     }
 
-    public String getOpenDate()
+    public Date getOpenDate()
     {
         return openDate;
     }
 
-    public void setOpenDate(String openDate)
+    public void setOpenDate(Date openDate)
     {
         this.openDate = openDate;
     }
 
-    public String getCloseDate()
+    public Date getCloseDate()
     {
         return closeDate;
     }
 
-    public void setCloseDate(String closeDate)
+    public void setCloseDate(Date closeDate)
     {
         this.closeDate = closeDate;
     }
@@ -157,4 +160,29 @@ public class DepositAccount
     {
         this.days = days;
     }
+    /*End of Getters and Setters*/
+
+    /*Start of Contructors*/
+    public DepositAccount(Long accountNumber, String closureType, Long interestID, Long initialAmount, String depositAccountType, Long interestedAmount, Long depositAccountNumber, Long currentBalance, double duration, double interestRate, Date openDate, Date closeDate, Integer days)
+    {
+        this.accountNumber = accountNumber;
+        this.closureType = closureType;
+        this.interestID = interestID;
+        this.initialAmount = initialAmount;
+        this.depositAccountType = depositAccountType;
+        this.interestedAmount = interestedAmount;
+        this.depositAccountNumber = depositAccountNumber;
+        this.currentBalance = currentBalance;
+        this.duration = duration;
+        this.interestRate = interestRate;
+        this.openDate = openDate;
+        this.closeDate = closeDate;
+        this.days = days;
+    }
+
+    public DepositAccount()
+    {
+
+    }
+    /*End of Constructors*/
 }
