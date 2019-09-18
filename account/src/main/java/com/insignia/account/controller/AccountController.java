@@ -27,7 +27,7 @@ public class AccountController
         return accountRepository.findById(customerID);
     }
 
-    @DeleteMapping("/customer/{}customerID")
+    @DeleteMapping("/customer/{customerID}")
     public boolean deleteCustomer(@PathVariable Long customerID)
     {
         accountRepository.delete(customerID);

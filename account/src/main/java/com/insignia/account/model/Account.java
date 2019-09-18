@@ -3,8 +3,11 @@ package com.insignia.account.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
+@Table(name = "account", catalog = "banking_app_db")
 public class Account
 {
     //private String customer;
@@ -15,7 +18,7 @@ public class Account
     private Long customerID;
     private Long balance;
     private double interestRate;
-    private String openDate;
+    private Date openDate;
     private Long interestID;
     private Long interestAmount;
 
@@ -72,12 +75,12 @@ public class Account
         this.interestRate = interestRate;
     }
 
-    public String getOpenDate()
+    public Date getOpenDate()
     {
         return openDate;
     }
 
-    public void setOpenDate(String openDate)
+    public void setOpenDate(Date openDate)
     {
         this.openDate = openDate;
     }
@@ -104,7 +107,7 @@ public class Account
     /*Getters and Setters End here*/
 
     /*Constructors Starts here*/
-    public Account(Integer accountNumber, String accountType, Long balance, double interestRate, String openDate, Long interestID, Long interestAmount)
+    public Account(Integer accountNumber, String accountType, Long balance, double interestRate, Date openDate, Long interestID, Long interestAmount)
     {
         this.accountNumber = accountNumber;
         this.accountType = accountType;
