@@ -8,16 +8,24 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "manager", catalog = "banking_app_db")
-public class OfficerModel
-{
+@Table(name = "officer", catalog = "banking_app_db")
+public class OfficerModel {
     private String userName;
     private String password;
-    private Name name;
+    /*
+    private String firstName;
+    private String middleName;
+    private String lastName;
+    */
     private Date dateOfBirth;
     private String contact;
     private String gender;
-    private Address address;
+    /*
+    private String street;
+    private String city;
+    private String province;
+    private String areaCode;
+    */
     private Long salary;
     private String nationality;
     private String email;
@@ -25,19 +33,27 @@ public class OfficerModel
     @GeneratedValue
     private int employmentID;
 
-    public OfficerModel()
-    {
+    public OfficerModel() {
 
     }
 
-    public OfficerModel(String userName, String password, Name name, Date dateOfBirth, String contact, String gender, Address address, Long salary, String nationality, String email) {
+    public OfficerModel(String userName, String password, /*String firstName, String middleName, String lastName,*/ Date dateOfBirth, String contact, String gender, /*String street, String city, String province, String areaCode,*/ Long salary, String nationality, String email) {
         this.userName = userName;
         this.password = password;
-        this.name = name;
+        /*
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        */
         this.dateOfBirth = dateOfBirth;
         this.contact = contact;
         this.gender = gender;
-        this.address = address;
+        /*
+        this.street = street;
+        this.city = city;
+        this.province = province;
+        this.areaCode = areaCode;
+        */
         this.salary = salary;
         this.nationality = nationality;
         this.email = email;
@@ -59,14 +75,31 @@ public class OfficerModel
         this.password = password;
     }
 
-    public Name getName() {
-        return name;
+    /*
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(Name name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    */
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
@@ -91,14 +124,40 @@ public class OfficerModel
         this.gender = gender;
     }
 
-    public Address getAddress() {
-        return address;
+    /*
+    public String getStreet() {
+        return street;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getAreaCode() {
+        return areaCode;
+    }
+
+    public void setAreaCode(String areaCode) {
+        this.areaCode = areaCode;
+    }
+
+    */
     public Long getSalary() {
         return salary;
     }
@@ -123,11 +182,11 @@ public class OfficerModel
         this.email = email;
     }
 
-    public int getEmplyomentID() {
+    public int getEmploymentID() {
         return employmentID;
     }
 
-    public void setEmplymentID(int employmentID) {
-        employmentID = employmentID;
+    public void setEmploymentID(int employmentID) {
+        this.employmentID = employmentID;
     }
 }

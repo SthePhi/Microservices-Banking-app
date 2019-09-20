@@ -15,24 +15,43 @@ public class OfficerController
     @Autowired
     private OfficerRepository officerRepository;
 
-    @GetMapping
-    public List<OfficerModel> getEmployee()
+    @GetMapping("/getAllOfficers")
+    public Iterable<OfficerModel> getEmployee()
     {
         return officerRepository.findAll();
     }
 
-    @GetMapping("/employee/{employmentID}")
+    @GetMapping("/getOfficer/{employmentID}")
     public Optional<OfficerModel> getEmployee(@PathVariable int employmentID)
     {
         return officerRepository.findById(employmentID);
     }
 
-    @DeleteMapping("/employee/{employmentID}")
+    /*
+    @DeleteMapping(value = "/deleteOfficer/{employmentID}")
     public boolean deleteEmployee(@PathVariable int employmentID)
     {
         officerRepository.deleteByemploymentID(employmentID);
         return true;
     }
+    */
+    @CrossOrigin(origins="http://localhost:9022", allowedHeaders = "*")
+    @DeleteMapping("/deleteOfficer/{employmentID}")
+    public void DeleteOfficer(@PathVariable int employmentID)
+    {
+        officerRepository.deleteByEmploymentID(employmentID);
+    }
 
-    
+    @PostMapping("/postOfficer")
+    public OfficerModel createEmployee(@RequestBody OfficerModel employee)
+    {
+        return officerRepository.save(employee);
+    }
+
+    @PutMapping("/updateOfficer")
+    public OfficerModel updateEmployee(OfficerModel employee)
+    {
+        return officerRepository.save(employee);
+    }
+
 }
