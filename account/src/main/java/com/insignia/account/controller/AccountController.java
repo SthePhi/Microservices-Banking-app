@@ -1,6 +1,6 @@
 package com.insignia.account.controller;
 
-import com.insignia.account.model.Account;
+import com.insignia.account.model.AccountModel;
 import com.insignia.account.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,34 +15,33 @@ public class AccountController
     @Autowired
     private AccountRepository accountRepository;
 
-    @GetMapping("/customers")
-    public List<Account> getCustomer()
+    @GetMapping("/accounts")
+    public List<AccountModel> getAccount()
     {
         return accountRepository.findAll();
     }
 
-    @GetMapping("/customer/{customerID}")
-    public Optional<Account> getCustomer(@PathVariable Long customerID)
+    @GetMapping("/account/{accountNumber}")
+    public Optional<AccountModel> getAccount(@PathVariable Long accountNumber)
     {
-        return accountRepository.findById(customerID);
+        return accountRepository.findById(accountNumber);
     }
 
-    @DeleteMapping("/customer/{customerID}")
-    public boolean deleteCustomer(@PathVariable Long customerID)
+    @DeleteMapping("/account/{accountNumber}")
+    public void deleteAccount(@PathVariable Long accountNumber)
     {
-        accountRepository.delete(customerID);
-        return true;
+        accountRepository.deleteById(accountNumber);
     }
 
-    @PostMapping("/customer")
-    public Customer createCustomer(Customer customer)
+    @PostMapping("/postAccount")
+    public AccountModel createCustomer(AccountModel account)
     {
-        return accountRepository.save(customer);
+        return accountRepository.save(account);
     }
 
-    @PutMapping("/customer")
-    public Customer updateCustomer(Customer customer)
+    @PutMapping("/putAccount")
+    public AccountModel updateAccount(AccountModel account)
     {
-        return accountRepository.save(customer);
+        return accountRepository.save(account);
     }
 }
