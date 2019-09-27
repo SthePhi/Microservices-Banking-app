@@ -5,7 +5,6 @@ import com.insignia.officer.repository.OfficerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -16,30 +15,21 @@ public class OfficerController
     private OfficerRepository officerRepository;
 
     @GetMapping("/getAllOfficers")
-    public Iterable<OfficerModel> getEmployee()
+    public Iterable<OfficerModel> getOfficer()
     {
         return officerRepository.findAll();
     }
 
     @GetMapping("/getOfficer/{employmentID}")
-    public Optional<OfficerModel> getEmployee(@PathVariable int employmentID)
+    public Optional<OfficerModel> getOfficer(@PathVariable int employmentID)
     {
         return officerRepository.findById(employmentID);
     }
 
-    /*
-    @DeleteMapping(value = "/deleteOfficer/{employmentID}")
-    public boolean deleteEmployee(@PathVariable int employmentID)
+    @DeleteMapping("/officer/{employmentID}")
+    public void deleteOfficer(@PathVariable Integer employmentID)
     {
-        officerRepository.deleteByemploymentID(employmentID);
-        return true;
-    }
-    */
-    @CrossOrigin(origins="http://localhost:9022", allowedHeaders = "*")
-    @DeleteMapping("/deleteOfficer/{employmentID}")
-    public void DeleteOfficer(@PathVariable int employmentID)
-    {
-        officerRepository.deleteByEmploymentID(employmentID);
+        officerRepository.deleteById(employmentID);
     }
 
     @PostMapping("/postOfficer")

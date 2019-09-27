@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface OfficerRepository extends CrudRepository<OfficerModel, Integer>
 {
-    void deleteByEmploymentID(int employmentID);
+
 }
