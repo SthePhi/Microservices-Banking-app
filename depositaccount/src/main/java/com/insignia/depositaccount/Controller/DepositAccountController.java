@@ -1,11 +1,12 @@
 package com.insignia.depositaccount.Controller;
 
-import com.insignia.depositaccount.Model.DepositAccount;
+import com.insignia.depositaccount.Model.DepositAccountModel;
 import com.insignia.depositaccount.Repository.DepositAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -14,34 +15,33 @@ public class DepositAccountController
     @Autowired
     private DepositAccountRepository depositAccountRepository;
 
-    @GetMapping("/customers")
-    public List<DepositAccount> getCustomer()
+    @GetMapping("/getAllDepositAccount")
+    public List<DepositAccountModel> getDepositAccount()
     {
         return depositAccountRepository.findAll();
     }
 
-    @GetMapping("/customer/{customerID}")
-    public DepositAccount getCustomer(@PathVariable Long customerID)
+    @GetMapping("/getEachDepositAccount/{depositAccountNumber}")
+    public Optional<DepositAccountModel> getDepositAccount(@PathVariable Long depositAccountNumber)
     {
-        return depositAccountRepository.findById(Long customerID);
+        return depositAccountRepository.findById(depositAccountNumber);
     }
 
-    @DeleteMapping("/customer/{customerID}")
-    public boolean deleteCustomer(@PathVariable Long customerID)
+    @DeleteMapping("/deleteDepositAccount/{depositAccountNumber}")
+    public void deleteAccount(@PathVariable Long depositAccountNumber)
     {
-        depositAccountRepository.delete(customerID);
-        return true;
+        depositAccountRepository.deleteById(depositAccountNumber);
     }
 
-    @PostMapping("/customer")
-    public Customer createCustomer(Customer customer)
+    @PostMapping("/createDepositAccount")
+    public DepositAccountModel createDepositAccount(DepositAccountModel depositAccount)
     {
-        return depositAccountRepository.save(customer);
+        return depositAccountRepository.save(depositAccount);
     }
 
-    @PutMapping("/customer")
-    public Customer updateCustomer(Customer customer)
+    @PutMapping("/updateDepositAccount")
+    public DepositAccountModel updateDepositAccount(DepositAccountModel depositAccount)
     {
-        return depositAccountRepository.save(customer);
+        return depositAccountRepository.save(depositAccount);
     }
 }
